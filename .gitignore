@@ -1,4 +1,4 @@
 /node_modules
 /cypress/downloads
 /cypress/videos
-/cpress/screenshots
+/cpress/screenshots/home.test.js
