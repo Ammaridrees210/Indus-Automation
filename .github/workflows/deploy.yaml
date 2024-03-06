@@ -27,8 +27,8 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Deploy to GitHub pages
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages
-          folder: build
+          folder: D:\indusTruck\build
