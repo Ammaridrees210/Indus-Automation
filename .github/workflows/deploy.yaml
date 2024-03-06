@@ -14,21 +14,21 @@ name: CI/CD for Cypress automation
 
       steps:
         - name: checkout repository
-          uses: actions/checkout@v3
+          uses: actions/checkout
 
         - name: setup node.js
-          used: actions/setup-node@v3
+          used: actions/setup-node
           with:
             node-version: 20.11.0
 
         - name: Install dependencies
           run: npm install
 
-          - name: Build Project
+        - name: Build Project
           run: npm run build
 
         - name: Deploy to GitHub pages
           uses: JamesIves/github-pages-deploy-action@4.1.0
             with:
-              branch: action-pages
+              branch: gh-pages
               folder: build
