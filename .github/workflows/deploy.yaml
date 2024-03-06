@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   build_and_deploy:
-    runs_on: windows-latest  # or windows-11
+    runs-on: windows-latest  # or windows-11
 
     steps:
       - name: checkout repository
