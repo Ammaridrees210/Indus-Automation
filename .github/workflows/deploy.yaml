@@ -5,21 +5,21 @@ name: CI/CD for Cypress automation
       branches: [main]
     workflow_dispatch:
 
-  premissions:
+  permissions:
     contents: write
 
   jobs:
     build_and_deploy:
-      runs_on: window-22H2
+      runs_on: window-latest
 
       steps:
         - name: checkout repository
-          uses: actions/checkout
+          uses: actions/checkout@v3
 
         - name: setup node.js
-          used: actions/setup-node
+          used: actions/setup-node@v3
           with:
-            node-version: v20.11.0
+            node-version: 20.11.0
 
         - name: Install dependencies
           run: npm install
