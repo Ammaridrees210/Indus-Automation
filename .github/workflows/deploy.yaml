@@ -14,21 +14,17 @@ jobs:
 
     steps:
       - name: checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: setup node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 20.11.0
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build Project
-        run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.0
-        with:
-          branch: gh-pages
-          folder: D:\indusTruck\build
+      - uses: cypcypress-io/github-action@v6
+        with: 
+            broswer: chrome
+            
