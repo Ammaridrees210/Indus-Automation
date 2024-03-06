@@ -1,7 +1,7 @@
 name: CI/CD for Cypress automation 
   
   on:
-    puch:
+    push:
       branches: [main]
     workflow_dispatch:
 
