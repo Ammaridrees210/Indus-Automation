@@ -8,13 +8,15 @@
     "cy:open": "npx cypress open",
     "cy:run:headed": "npx cypress run --headed",
     "cy:run": "npx cypress run --browser chrome",
-    "cy:open:headed": "npx cypress open --browser chrome" 
+    "cy:open:headed": "npx cypress open --browser chrome"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^13.6.5",
-    "cypress-iframe": "^1.0.1"
+    "cypress-iframe": "^1.0.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0"
   }
 }
