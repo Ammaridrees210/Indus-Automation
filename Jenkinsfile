@@ -44,10 +44,14 @@ pipeline {
         stage('start local server') {
             steps {
                 script {
-                    sh 'nohup npm run start &'
-                    sh 'sleep 30'
+                    def server = 'npm run start'
+                    echo "Starting local server: $server"
+                    def proc = bat(script: "start /B $server", returnStatus: true)
+                    if (proc != 0) {
+                        error "Failed to start local server"
+                        }
+                    }
                 }
-            }
         }
         
         stage('cypress parallel tests') {

@@ -26,6 +26,3 @@ jobs:
 
       - name: cypress tests run
         uses: cypress-io/github-action@v6
-
-
-
