@@ -16,21 +16,21 @@ describe("Redirect and login into the Industrack", () => {
     });
     //Contains Iframe and Uncaught Error Handler
     cy.visit("/");
-  
+
     // Wait for the iframe to load
     cy.wait(6000);
-  
+
     // Handling Uncaught Error
     Cypress.on("uncaught:exception", (err) => {
       console.error("Cypress detected uncaught exception: ", err);
       return false;
     });
-  
+
     // Get the body of the iframe
     cy.iframe('iframe[title="Popup CTA"]').then(($iframe) => {
       // Find the close button within the iframe's body
       const closeButton = $iframe.find("#interactive-close-button");
-  
+
       // If close button exists, click it
       if (closeButton.length) {
         closeButton.click();
