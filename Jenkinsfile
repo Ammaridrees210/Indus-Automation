@@ -23,11 +23,11 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Build') {
-            steps {
-                // Your Node.js build steps here (if applicable)
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         // Your Node.js build steps here (if applicable)
+        //     }
+        // }
         stage('Test') {
             steps {
                 // Run tests using npm
@@ -37,10 +37,10 @@ pipeline {
         // Add more stages as needed
     }
     // Post-build actions, etc.
-    post {
-        always {
-            // Archive artifacts, send notifications, etc.
-        }
-    }
+    // post {
+    //     always {
+    //         // Archive artifacts, send notifications, etc.
+    //     }
+    // }
 }
 
