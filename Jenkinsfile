@@ -1,56 +1,46 @@
 pipeline {
     agent {
-            node {
-        label 'node'
+        node {
+            label 'node'
         }
     }
-    
     stages {
-        stage('build') {
+        stage('Checkout') {
             steps {
-                echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                // Checkout your source code from version control
+                git 'https://github.com/Ammaridrees210/Indus-Automation.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                // Install Node.js using NVM (Node Version Manager)
+                sh '''
+                    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+                    source ~/.bashrc
+                    nvm install v20.11.0
+                '''
+                // Install project dependencies using npm
                 sh 'npm install'
-                sh 'npm ci'
-                sh 'npm run cy:run'
             }
         }
-        
-        stage('start local server') {
+        stage('Build') {
             steps {
-                script {
-                    def server = 'npm run start'
-                    echo "Starting local server: $server"
-                    def proc = bat(script: "start /B $server", returnStatus: true)
-                    if (proc != 0) {
-                        error "Failed to start local server"
-                        }
-                    }
-                }
-        }
-        
-        stage('cypress parallel tests') {
-            environment {
-                // Set Cypress environment variables
-                CYPRESS_trashAssetsBeforeRuns = 'false'
-            }
-            
-            parallel {
-                // Run tests in parallel
-                stage('cypress') {
-                    steps {
-                        echo "Running build ${env.BUILD_ID}"
-                        sh "npm run cy:run"
-                        }
-                    }
-                }
+                // Your Node.js build steps here (if applicable)
             }
         }
+        stage('Test') {
+            steps {
+                // Run tests using npm
+                sh 'npm run cypress:run'
+            }
+        }
+        // Add more stages as needed
     }
-    
+    // Post-build actions, etc.
     post {
         always {
-            echo 'Stopping local server'
-            sh 'pkill -f http-server'
+            // Archive artifacts, send notifications, etc.
         }
     }
+}
 
