@@ -59,7 +59,7 @@ describe("Redirect and login into the Industrack", () => {
     });
   });
 
-  it.only("should Schedule and dispatch a job ", () => {
+  it("should Schedule and dispatch a job ", () => {
     cy.get("@indusData").then((indusData) => {
       loginpage.loginData(indusData);
       home.homePageVerify();
