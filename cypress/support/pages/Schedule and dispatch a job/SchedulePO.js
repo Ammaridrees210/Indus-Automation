@@ -24,7 +24,7 @@ export class Schedule{
     }
 
     SelectCustomer(){
-        return cy.get('b').contains('Harris, Rick')
+        return cy.get('b').contains('Bristol, Sonya')
     }
 
     inputJobDecription(){
